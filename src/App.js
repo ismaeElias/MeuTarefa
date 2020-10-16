@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './index.css';
+const { ipcRenderer } = window.require('electron');
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  clicou() {
+    ipcRenderer.send('clicou-aqui');
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <main className="screen-left">
+        </main>
+        <aside className="screen-right">
+          <div className="conteudo-screen">
+            <h2>Meu Tarefa</h2>
+            <p>Sistema de gerenciamentos de tarefas.</p>
+            <input type="text" />
+            <input type="text" />
+            <button>Acessar</button>
+          </div>
+        </aside>
+      </div>
+    );
+  }
 }
 
 export default App;
